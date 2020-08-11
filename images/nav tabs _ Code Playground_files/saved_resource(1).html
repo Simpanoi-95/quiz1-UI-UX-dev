@@ -1,0 +1,39 @@
+
+<!-- saved from url=(0035)https://solocode.azurewebsites.net/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body style="margin:0">
+    <iframe id="codeRunner" style="width:100%; height:100%; border:0" src="./saved_resource.html"></iframe>
+    <script>
+                window.addEventListener('message', function (e) {
+                    if (e.origin === 'https://solocode.azurewebsites.net') {
+                        window.parent.postMessage({ text: e.data, type: 'error' }, '*');
+                    } else {
+                        var frame = document.getElementById('codeRunner');
+                        frame.contentDocument.open();
+                        frame.contentDocument.write(e.data);
+                        frame.contentDocument.close();
+                    }
+                }, false);
+                var iWindow = document.getElementById('codeRunner');
+                var win = iWindow.contentWindow;
+                win.console.log = function () {
+                    var output = '';
+                    for (var i = 0; i < arguments.length; i++) {
+                        var current = arguments[i];
+                        if (typeof current == 'string' || typeof current == 'number' || typeof current == 'boolean') output += arguments[i] + ' ';
+                    }
+                    var outputHTML = output.replace(/\\r\\n /g, '<br/>').replace(/\\n /g, '<br/>').replace(/</g, '&lt;').replace(/>/g, '&gt;') + '<br/>';
+                    window.parent.postMessage({ text: outputHTML, type: 'log' }, '*');
+                };
+                win.onerror = function (msg, url, line, col, error) {
+                    var lineText = line == 0 ? '' : '<br /><span>Line: ' + (line) + '</span>';
+                    var errorMessage = msg + lineText;
+                    alert(errorMessage);
+                    window.parent.postMessage({ text: errorMessage, type: 'error' }, '*');
+                };
+    </script>
+
+
+
+</body></html>
